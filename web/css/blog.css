@@ -1,0 +1,155 @@
+body {
+    backgroud-color: cadetblue;
+}
+
+.site-login, .site-register {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom: 20px;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.site-login h3, .site-register h3 {
+    background-color: whitesmoke;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-width: 0 0 1px 0;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.site-login form, .site-register form {
+    padding: 20px;
+}
+
+.container {
+    width: 70%;
+}
+
+.card-container {
+    float: left;
+    width: 70%;
+    max-width: 70%;
+}
+
+.menu-container {
+    float: left;
+    width: 26%;
+    max-width: 26%;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-avatar img {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.card-content {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 10px 15px;
+    margin-left: 70px;
+    background-color: #fff;
+}
+
+.card-title a {
+    font-size: 16px;
+    color: #666;
+}
+
+.card-status {
+    color: #999;
+}
+
+.card-text {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.menu {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 10px 15px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.menu-avatar img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.menu-recommend img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.menu-avatar {
+    text-align: center;
+}
+
+.menu-username {
+    color: #444;
+}
+
+.menu-btn {
+    margin: 20px 0 10px 0;
+}
+
+.menu-btn a {
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.card-btn {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.card-btn a {
+    color: #999;
+}
+
+.card-btn-right a {
+    margin-left: 30px;
+}
+
+.card-btn a:hover {
+    color: #666;
+    text-decoration: none;
+}
+
+.card-btn-left {
+    float: left;
+}
+
+.card-btn .active {
+    color: sandybrown;
+}
+
+.repost {
+    background-color: whitesmoke;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    font-size: 12px;
+}
+
