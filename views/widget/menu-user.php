@@ -7,7 +7,7 @@ use yii\bootstrap\ActiveForm;
 ?>
 <div class="menu">
     <div class="menu-avatar">
-        <a href="javascript:void (0)">
+        <a href="javascript:void (0)" data-toggle="modal" data-target="#uploadModal">
             <img src="/images/upload/<?= $user->avatar ?>">
         </a>
 
@@ -32,14 +32,14 @@ use yii\bootstrap\ActiveForm;
     ]);
 
     $form = ActiveForm::begin([
-        'action'  => '?=upload/avatar',
+        'action'  => '?r=upload/avatar',
         'options' => [
             'class'   => 'upload-form upload-avatar-form',
             'enctype' => 'multipart/form-data',
         ]
     ]);
     ?>
-    <?= $form->field(new app\models\UploadForm(), 'imageFiles')->fileInput(['class' => 'upload-avatar-input hidden'])->label(false) ?>
+    <?= $form->field(new app\models\UploadForm(), 'imageFiles')->fileInput(['class' => 'upload-avatar-input hidden'])->label(false); ?>
 
     <div class="form-group upload-images upload-avatar">
         <a class="btn-form-img" href="javascript:void(0)">
