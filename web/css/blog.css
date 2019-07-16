@@ -153,3 +153,20 @@ body {
     font-size: 12px;
 }
 
+.btn-form a {
+    float: left;
+    color: #666;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.btn-form a:hover {
+    color: #333;
+}
+
+.preview-img {
+    max-width: 160px;
+    max-height: 160px;
+    width: 100%;
+    margin: 2px;
+}
