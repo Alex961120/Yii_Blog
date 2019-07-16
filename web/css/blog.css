@@ -192,3 +192,11 @@ body {
 .prev-img {
     left: 20px;
 }
+
+.upload-avatar {
+    text-align: center;
+}
+
+.upload-images img {
+    width: 100%;
+}
