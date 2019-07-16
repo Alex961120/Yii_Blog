@@ -31,9 +31,9 @@ function preview(filenames) {
 
 var previewObj;
 function replaceImg(obj) {
-    var src = $(obj).find('img').attr('scr');
+    var src = $(obj).find('img').attr('src');
     if (src != undefined){
-        $(".previewModel-img").attr('src',src);
+        $(".previewModal-img").attr('src',src);
         previewObj = obj;
     }
 }
