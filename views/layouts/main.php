@@ -46,8 +46,8 @@ AppAsset::register($this);
             'url'         => 'javascript:void(0)',
             'linkOptions' => [
                 'id'          => 'publish',
-                'data-toggle' => 'model',
-                'data-target' => '#publishModel'
+                'data-toggle' => 'modal',
+                'data-target' => '#publishModal'
             ]
         ],
         [

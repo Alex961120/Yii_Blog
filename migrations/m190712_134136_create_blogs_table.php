@@ -22,7 +22,7 @@ class m190712_134136_create_blogs_table extends Migration
             'img'              => $this->text(),
             'updated_at'       => $this->timestamp(),
             'created_at'       => $this->timestamp(),
-        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
+        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4');
     }
 
     /**

@@ -23,7 +23,7 @@ class m190711_120020_create_users_table extends Migration
             'followed_count' => $this->integer()->notNull()->defaultValue(0),
             'updated_at'     => $this->timestamp(),
             'created_at'     => $this->timestamp(),
-        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
+        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4');
     }
 
     /**
