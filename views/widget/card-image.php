@@ -14,9 +14,9 @@ use yii\bootstrap\Modal;
 <?php
 Modal::begin([
     'options' => [
-        'id' => 'previewModel',
+        'id' => 'previewModal',
     ],
-]) ?>
+]); ?>
 <?= Html::a(Html::icon('glyphicon glyphicon-chevron-left'), 'javascrpt:void(0)', ['class' => 'preview-img-btn prev-img']); ?>
 <?= Html::img('/images/upload/default.jpg', ['class' => 'previewModal-img']); ?>
 <?= Html::a(Html::icon('glyphicon glyphicon-chevron-right'), 'javascrpt:void(0)', ['class' => 'preview-img-btn next-img']); ?>
