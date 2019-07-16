@@ -2,11 +2,17 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
+use app\models\User;
+use yii\filters\AccessControl;
 
 class UploadController extends \yii\web\Controller
 {
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
@@ -23,10 +29,11 @@ class UploadController extends \yii\web\Controller
         ];
     }
 
+    # 显示iframe域
     public function actionBlog()
     {
         $model             = new UploadForm();
-        $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
+        $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
         if ($filenames = $model->upload()) {
             return "<script>parent.preview('$filenames')</script>";
         }

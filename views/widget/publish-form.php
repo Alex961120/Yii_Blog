@@ -23,6 +23,9 @@ $blogModel = new Blog();
     <?= Html::a(Html::icon('picture') . ' 图片', 'javascript:void(0)', ['class' => 'btn-form-img']) ?>
     <?= Html::a(Html::icon('paperclip') . ' 话题', 'javascript:void(0)', ['class' => 'btn-form-topic']) ?>
 </div>
+
+<div class="form-group upload-images upload-blog"></div>
+
 <div class="form-group" style="text-align:right">
     <?= Html::submitButton('发布', ['class' => 'btn btn-primary']) ?>
 </div>
