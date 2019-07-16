@@ -175,3 +175,20 @@ body {
     margin: 4px;
     width: 31%;
 }
+
+.previewModel-img {
+    width: 100%;
+}
+
+.preview-img-btn {
+    font-size: 5rem;
+    color: #ddd;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.prev-img {
+    left: 20px;
+}
