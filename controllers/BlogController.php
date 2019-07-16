@@ -64,6 +64,10 @@ class BlogController extends \yii\web\Controller
         $model->parent_id = $repost_blog->id;
         $model->origin_id = $repost_blog->origin_id ?? $repost_blog->id;
 
+        if ($filenames = Yii::$app->request->post('filenames')) {
+            // 将图片信息存入对应的模型当中
+            $model->img = json_encode($filenames);
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->goBack();
         }

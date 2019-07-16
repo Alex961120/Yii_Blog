@@ -5,14 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
-use app\models\User;
 use yii\filters\AccessControl;
 
 class UploadController extends \yii\web\Controller
 {
-    /**
-     * {@inheritdoc}
-     */
     public function behaviors()
     {
         return [

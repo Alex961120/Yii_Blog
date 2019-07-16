@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\CardImageWidget;
 use yii\helpers\Url;
 use yii\bootstrap\Html;
 
@@ -38,6 +39,11 @@ use yii\bootstrap\Html;
             <p class="card-text">
                 <?= empty($blog->text) ? '转发了' : $blog->text ?>
             </p>
+            <!-- 转发内容 -->
+            <?php if ($blog->img): ?>
+                <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->img]) ?>
+            <?php endif; ?>
+            <!-- /转发内容 -->
 
             <div class="repost">
                 <!-- 转发标题 -->
@@ -52,6 +58,13 @@ use yii\bootstrap\Html;
                 <p class="card-text">
                     <?= $blog->origin->text ?>
                 </p>
+
+                <!-- 转发内容 -->
+                <?php if ($blog->origin->img): ?>
+                    <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->origin->img]) ?>
+                <?php endif; ?>
+                <!-- /转发内容 -->
+
                 <?= app\widgets\CardButtonWidget::widget(['blog' => $blog->origin]) ?>
             </div>
             <!-- /转发 -->
@@ -59,6 +72,11 @@ use yii\bootstrap\Html;
                 <p class="card-text">
                     <?= $blog->text ?>
                 </p>
+                <!-- 转发内容 -->
+                <?php if ($blog->img): ?>
+                    <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->img]) ?>
+                <?php endif; ?>
+                <!-- /转发内容 -->
             <?php endif; ?>
 
             <?= app\widgets\CardButtonWidget::widget(['blog' => $blog]) ?>

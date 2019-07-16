@@ -26,5 +26,5 @@ function preview(filenames) {
     $(form).find(".upload-images").html(images + input).css("clear", "both");
     $(".upload-form").attr('target', '');
     // 更换表单提交路由
-    $(".upload-blog-form").attr('action', '?r=blog/store');
+    $(".upload-blog-form").attr('action', '?r=blog/repost');
 }

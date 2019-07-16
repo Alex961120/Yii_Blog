@@ -166,7 +166,12 @@ body {
 
 .preview-img {
     max-width: 160px;
-    max-height: 160px;
+    /*max-height: 160px;*/
     width: 100%;
     margin: 2px;
+}
+
+.card-img img {
+    margin: 4px;
+    width: 31%;
 }
