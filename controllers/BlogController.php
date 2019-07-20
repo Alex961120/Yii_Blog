@@ -78,7 +78,6 @@ class BlogController extends \yii\web\Controller
     {
         $blog = Blog::findOne($id);
         if ($blog->user_id == Yii::$app->user->id) {
-            $blog->afterDelete();
             $blog->delete();
         }
         return $this->goHome();
