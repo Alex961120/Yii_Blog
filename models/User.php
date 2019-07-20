@@ -36,7 +36,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['name', 'email', 'password'], 'required'],
             [['follower_count', 'followed_count'], 'integer'],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at'], 'default', 'value' => date('Y-m-d H:i:s', time())],
             [['name', 'email', 'password', 'avatar', 'auth_key'], 'string', 'max' => 255],
         ];
     }
@@ -110,6 +110,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function getBlogs()
     {
         return $this->hasMany(Blog::className(), ['user_id' => 'id']);
+    }
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['user_id' => 'id']);
     }
 
 }

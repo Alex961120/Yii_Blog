@@ -35,7 +35,7 @@ class Blog extends \yii\db\ActiveRecord
         return [
             ['user_id', 'default', 'value' => Yii::$app->user->id],
             [['text'], 'string', 'max' => 255],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at'], 'default', 'value' => date('Y-m-d H:i:s', time())],
         ];
     }
 
@@ -70,5 +70,10 @@ class Blog extends \yii\db\ActiveRecord
     public function getOrigin()
     {
         return $this->hasOne(Blog::className(), ['id' => 'origin_id']);
+    }
+
+    public function getComments()
+    {
+        return $this->hasMany(Comment::className(), ['blog_id' => 'id']);
     }
 }
