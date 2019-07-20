@@ -81,4 +81,9 @@ class Blog extends \yii\db\ActiveRecord
     {
         Comment::deleteAll(['blog_id' => $this->id]);
     }
+
+    public function getLike()
+    {
+        return $this->hasOne(Like::className(), ['blog_id' => 'id'])->where(['user_id'=>Yii::$app->user->id]);
+    }
 }

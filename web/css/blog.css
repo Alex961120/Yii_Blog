@@ -225,3 +225,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
 }
+
+.card-btn .active {
+    color:sandybrown;
+}
