@@ -14,15 +14,15 @@ class FollowController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['user'],
+                'only'  => ['user'],
                 'rules' => [
                     [
                         'actions' => ['user'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
+                        'allow'  => true,
+                        'roles'  => ['@'],
+                    ]
                 ],
-            ],
+            ]
         ];
     }
 
