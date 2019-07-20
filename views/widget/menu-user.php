@@ -12,6 +12,11 @@ use yii\bootstrap\ActiveForm;
         </a>
 
         <h4><?= $user->name ?></h4>
+        <?php if (!(Yii::$app->user->id == $user->id)): ?>
+            <a href="?r=follow/user&id=<?= $user->id ?>" class="btn btn-primary">
+                <?= $user->follow ? ($user->followed ? '互相关注' : '取消关注') : '关注' ?>
+            </a>
+        <?php endif; ?>
 
         <p class="menu-btn">
             <a href="#">动态 <em> <?= count($user->blogs) ?></em></a>

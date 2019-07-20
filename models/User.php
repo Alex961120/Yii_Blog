@@ -117,4 +117,18 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->hasMany(Comment::className(), ['user_id' => 'id']);
     }
 
+    public function getFollow()
+    {
+        //  我关注的
+        # 关联查询follows表 某用户是不是属于被关注者  此时登录用户为关注者
+        return $this->hasOne(Follow::className(), ['followed_user_id' => 'id'])->where(['user_id' => Yii::$app->user->id]);
+    }
+
+    public function getFollowed()
+    {
+        // 关注我的
+        # 关联查询follows表 某用户是不是属于关注者 此时登录用户为被关注者
+        return $this->hasOne(Follow::className(), ['user_id' => 'id'])->where(['followed_user_id' => Yii::$app->user->id]);
+    }
+
 }
