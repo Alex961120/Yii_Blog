@@ -1,5 +1,6 @@
 <?php
 
+use app\widgets\CardButtonWidget;
 use app\widgets\CardImageWidget;
 use yii\helpers\Url;
 use yii\bootstrap\Html;
@@ -28,6 +29,12 @@ use yii\bootstrap\Html;
             </p>
             <!-- /标题 -->
 
+            <!-- 删除 -->
+            <?php if ($blog->user->id == Yii::$app->user->id): ?>
+                <a href="?r=blog/delete&id=<?= $blog->id ?>" class="comment-btn comment-delete">删除</a>
+            <?php endif ?>
+            <!-- /删除-->
+
             <!-- 状态 -->
             <p class="cart-status">
                 <?= $blog->created_at ?> <?= $blog->parent_id ? '转发' : '发布' ?>了状态
@@ -39,45 +46,52 @@ use yii\bootstrap\Html;
             <p class="card-text">
                 <?= empty($blog->text) ? '转发了' : $blog->text ?>
             </p>
+
+            <!-- 转发内容 -->
+        <?php if ($blog->img): ?>
+            <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->img]) ?>
+        <?php endif; ?>
+            <!-- /转发内容 -->
+
+            <div class="repost">
+                <!-- 转发标题 -->
+
+                <?php if ($blog->parent): ?>
+                    <p class="card-title">
+                        <a href="<?= Url::to(['user/show', 'id' => $blog->parent->user->id]) ?>"><?= $blog->parent->user->name ?></a>     <?= $blog->created_at ?>
+                    </p>
+
+
+
+                    <!-- /转发标题 -->
+                    <p class="card-text">
+                        <?= $blog->origin->text ?>
+                    </p>
+
+                    <!-- 转发内容 -->
+                    <?php if ($blog->origin->img): ?>
+                        <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->origin->img]) ?>
+                    <?php endif; ?>
+                    <!-- /转发内容 -->
+
+                    <?= app\widgets\CardButtonWidget::widget(['blog' => $blog->origin]) ?>
+                <?php else: ?>
+                    原微博已被删除
+                <?php endif; ?>
+
+
+            </div>
+            <!-- /转发 -->
+        <?php else: ?>
+            <p class="card-text">
+                <?= $blog->text ?>
+            </p>
             <!-- 转发内容 -->
             <?php if ($blog->img): ?>
                 <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->img]) ?>
             <?php endif; ?>
             <!-- /转发内容 -->
-
-            <div class="repost">
-                <!-- 转发标题 -->
-                <p class="card-title">
-                    <?php if ($blog->parent): ?>
-                        <a href="<?= Url::to(['user/show', 'id' => $blog->parent->user->id]) ?>"><?= $blog->parent->user->name ?></a>
-                    <?php else: ?>
-                        原微博已被删除
-                    <?php endif; ?>
-                </p>
-                <!-- /转发标题 -->
-                <p class="card-text">
-                    <?= $blog->origin->text ?>
-                </p>
-
-                <!-- 转发内容 -->
-                <?php if ($blog->origin->img): ?>
-                    <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->origin->img]) ?>
-                <?php endif; ?>
-                <!-- /转发内容 -->
-
-                <?= app\widgets\CardButtonWidget::widget(['blog' => $blog->origin]) ?>
-            </div>
-            <!-- /转发 -->
-            <?php else: ?>
-                <p class="card-text">
-                    <?= $blog->text ?>
-                </p>
-                <!-- 转发内容 -->
-                <?php if ($blog->img): ?>
-                    <?= app\widgets\CardImageWidget::widget(['imgs' => $blog->img]) ?>
-                <?php endif; ?>
-                <!-- /转发内容 -->
-            <?php endif; ?>
+        <?php endif; ?>
 
             <?= app\widgets\CardButtonWidget::widget(['blog' => $blog]) ?>
 

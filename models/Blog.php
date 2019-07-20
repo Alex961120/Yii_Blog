@@ -76,4 +76,9 @@ class Blog extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Comment::className(), ['blog_id' => 'id']);
     }
+
+    public function afterDelete()
+    {
+        Comment::deleteAll(['blog_id' => $this->id]);
+    }
 }
