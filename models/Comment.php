@@ -62,6 +62,6 @@ class Comment extends \yii\db\ActiveRecord
 
     public function getParent()
     {
-        return $this->hasOne(Comment::className(), ['id' => 'parent_id']);
+        return $this->hasOne(User::className(), ['id' => 'parent_id']);
     }
 }

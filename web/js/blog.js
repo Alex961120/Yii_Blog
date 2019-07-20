@@ -30,13 +30,15 @@ function preview(filenames) {
 }
 
 var previewObj;
+
 function replaceImg(obj) {
     var src = $(obj).find('img').attr('src');
-    if (src != undefined){
-        $(".previewModal-img").attr('src',src);
+    if (src != undefined) {
+        $(".previewModal-img").attr('src', src);
         previewObj = obj;
     }
 }
+
 $('#previewModal').on('show.bs.modal', function (e) {
     replaceImg(e.relatedTarget);
 });
@@ -47,3 +49,10 @@ $(".next-img").click(function () {
 $(".prev-img").click(function () {
     replaceImg($(previewObj).prev());
 });
+
+$(".comment-reply").click(function () {
+    var id = $(this).attr('data-id');
+    var name = $(this).attr('data-name');
+    $('#comment-parent_id').val(id);
+    $('#comment-content').attr('placeholder', '回复@' + name + ':').focus();
+})

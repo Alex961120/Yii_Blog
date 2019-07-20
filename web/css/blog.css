@@ -200,3 +200,28 @@ body {
 .upload-images img {
     width: 100%;
 }
+
+.comment img, .card-avatar img {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.comment img {
+    width: 40px;
+    height: 60px;
+}
+
+.comment-btn {
+    float: right;
+    margin: 10px 10px;
+}
+
+.comment-content {
+    background-color: #eee;
+    padding: 10px;
+    margin-left: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
