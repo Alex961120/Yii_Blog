@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "blogs".
@@ -134,5 +135,24 @@ class Blog extends \yii\db\ActiveRecord
             }
         }
         return true;
+    }
+
+    public function getTopics()
+    {
+        return $this->hasMany(Topic::className(), ['id' => 'topic_id'])->viaTable(TopicBlog::tableName(), ['blog_id' => 'id']);
+    }
+
+    public function text()
+    {
+        if (empty($this->topics)) {
+            return $this->text;
+        }
+        $replace = $find = [];
+        foreach ($this->topics as $topic) {
+            $name      = '#' . $topic['name'] . '#';
+            $find[]    = $name;
+            $replace[] = Html::a($name, ['topic/show', 'id' => $topic['id']]);
+        }
+        return str_replace($find, $replace, $this->text);
     }
 }

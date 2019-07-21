@@ -44,7 +44,7 @@ use yii\bootstrap\Html;
 
             <?php if ($blog->parent_id): ?><!-- 转发 -->
             <p class="card-text">
-                <?= empty($blog->text) ? '转发了' : $blog->text ?>
+                <?= empty($blog->text) ? '转发了' : $blog->text() ?>
             </p>
 
             <!-- 转发内容 -->
@@ -84,7 +84,7 @@ use yii\bootstrap\Html;
             <!-- /转发 -->
         <?php else: ?>
             <p class="card-text">
-                <?= $blog->text ?>
+                <?= $blog->text() ?>
             </p>
             <!-- 转发内容 -->
             <?php if ($blog->img): ?>
