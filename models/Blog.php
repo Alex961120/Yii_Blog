@@ -89,9 +89,9 @@ class Blog extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-        return parent::beforeSave($insert);
+        parent::beforeSave($insert);
 
-        # 正则表达式匹配话题话题内容
+        # 正则表达式匹配我们发布时的话题内容
         preg_match_all("/#(.*?)#/", $this->text, $matches);
 
         if (empty($matches)) {
@@ -99,20 +99,18 @@ class Blog extends \yii\db\ActiveRecord
         }
 
         foreach ($matches[1] as $key => $name) {
-            // 不存在则新建
+            # 如果当前发布话题不存在 则新建话题
             if (!($topic = Topic::findOne(['name' => $name]))) {
-                $topic       = new Topic();
-                $topic->name = $name;
-                $topic->user = Yii::$app->user->id;
+                $topic          = new Topic();
+                $topic->name    = $name;
+                $topic->user_id = Yii::$app->user->id;
             }
-
-            // 如果话题存在 该话题下的状态数量+1
+            # 如果话题存在 该话题下的状态数量+1
             $topic->blog_count++;
             if (!$topic->save()) {
                 return false;
             }
-
-            // 将新生成的话题装载
+            # 将新生成的话题装载
             $this->topic_id[] = $topic->id;
         }
         return true;
