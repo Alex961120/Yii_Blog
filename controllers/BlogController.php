@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Blog;
+use app\models\Event;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use Yii;
@@ -40,6 +41,10 @@ class BlogController extends \yii\web\Controller
 
     public function actionStore()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new Blog();
 
         if ($filenames = Yii::$app->request->post('filenames')) {
@@ -48,6 +53,9 @@ class BlogController extends \yii\web\Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // 触发发布事件
+            Event::create(Blog::className(), $model->id, '发布');
+
             return $this->goHome();
         }
 
@@ -60,6 +68,12 @@ class BlogController extends \yii\web\Controller
             return $this->goBack();
         }
 
+        # 转发源状态
+        if ($repost_blog->origin_id != $repost_blog->id && ($orgin_blog = Blog::findOne($repost_blog->origin_id))) {
+            // 触发发布事件
+            Event::create(Blog::className(), $orgin_blog->id, '转发');
+        }
+
         $model            = new Blog();
         $model->parent_id = $repost_blog->id;
         $model->origin_id = $repost_blog->origin_id ?? $repost_blog->id;
@@ -69,6 +83,9 @@ class BlogController extends \yii\web\Controller
             $model->img = json_encode($filenames);
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // 触发发布事件
+            Event::create(Blog::className(), $model->id, '发布');
+
             return $this->goBack();
         }
         return $model->errors;
@@ -78,6 +95,7 @@ class BlogController extends \yii\web\Controller
     {
         $blog = Blog::findOne($id);
         if ($blog->user_id == Yii::$app->user->id) {
+            Event::destroy(Blog::className(), $id,"删除");
             $blog->delete();
         }
         return $this->goHome();

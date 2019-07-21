@@ -5,10 +5,16 @@ use yii\helpers\Url;
 use yii\bootstrap\Modal;
 
 $url_comment = Url::to(['comment/show', 'id' => $blog->id]);
+$url_event   = Url::to(['event/show', 'id' => $blog->id]);
 
 ?>
 
 <div class="card-btn">
+
+    <div class="card-btn-left">
+        <?= Html::a(Html::icon('heart') . ' 热度 ' . Html::tag('em', $blog->popularity_count), $url_event, ['class' => 'card-btn-trend' . (Url::current() == $url_event ? ' active' : '')]) ?>
+    </div>
+
     <div class="card-btn-right">
         <?= Html::a(Html::icon('thumbs-up'), 'javascript:void(0)', ['data-id' => $blog->id, 'class' => 'card-btn-like' . (!empty($blog->like) ? ' active' : '')]) ?>
         <?= Html::a(Html::icon('comment'), $url_comment) ?>

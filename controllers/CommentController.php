@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Event;
 use Yii;
 use app\models\Blog;
 use app\models\Comment;
@@ -48,6 +49,8 @@ class CommentController extends \yii\web\Controller
         $model->user_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Event::create(Blog::className(), $model->blog_id, '评论', $model->id);
+
             return $this->redirect(Yii::$app->request->referrer);
         }
         return $model->errors;
@@ -57,6 +60,7 @@ class CommentController extends \yii\web\Controller
     {
         $comment = Comment::findOne($id);
         if ($comment->user_id == Yii::$app->user->id) {
+            Event::destroy(Blog::className(), $comment->blog_id, '评论', $id);
             $comment->delete();
         }
         return $this->redirect(Yii::$app->request->referrer);

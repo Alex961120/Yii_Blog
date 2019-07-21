@@ -155,4 +155,9 @@ class Blog extends \yii\db\ActiveRecord
         }
         return str_replace($find, $replace, $this->text);
     }
+
+    public function getEvents()
+    {
+        return $this->hasMany(Event::className(), ['target_id' => 'id']);
+    }
 }
