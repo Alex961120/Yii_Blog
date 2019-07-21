@@ -52,7 +52,7 @@ class Topic extends \yii\db\ActiveRecord
         ];
     }
 
-    public function page($page, $pageSize = 10)
+    public static function page($page, $pageSize = 10)
     {
         return Topic::find()->orderBy('blog_count desc')
             ->offset($page == 1 ? 0 : ($page - 1) * $pageSize)
@@ -61,8 +61,13 @@ class Topic extends \yii\db\ActiveRecord
             ->all();
     }
 
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
     public function getBlogs()
     {
-        return $this->hasMany(Blog::className(), ['id' => 'blog_id'])->viaTable(TopicBlog::tableName(), ['topic_id' => id]);
+        return $this->hasMany(Blog::className(), ['id' => 'blog_id'])->viaTable(TopicBlog::tableName(), ['topic_id' => 'id']);
     }
 }

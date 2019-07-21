@@ -12,8 +12,7 @@ use yii\helpers\Url;
         </div>
 
         <div class="card-content">
-            <p class="card-title"><a
-                        href="<?= Url::to(['user/show', 'id' => $topic->user_id]) ?>"><?= $topic->user->name ?></a>
+            <p class="card-title"><a href="<?= Url::to(['user/show', 'id' => $topic->user_id]) ?>"><?= $topic->user->name ?></a></p>
             </p>
             <p class="card-status"><?= $topic->created_at ?> 创建了话题</p>
             <h4>#<?= $topic->name ?>#</h4>
@@ -23,7 +22,7 @@ use yii\helpers\Url;
 </div>
 
 <div class="menu-container">
-    <?=app\widgets\MenuTopicWidget::widget()?>
-    <?=app\widgets\MenuRecommendWidget::widget()?>
+    <?= app\widgets\MenuTopicWidget::widget() ?>
+    <?= app\widgets\MenuRecommendWidget::widget() ?>
 </div>
 
