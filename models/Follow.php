@@ -31,7 +31,7 @@ class Follow extends \yii\db\ActiveRecord
         return [
             [['user_id', 'followed_user_id'], 'required'],
             [['user_id', 'followed_user_id'], 'integer'],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at'], 'default', 'value' => date('Y-m-d H:i:s', time())],
         ];
     }
 

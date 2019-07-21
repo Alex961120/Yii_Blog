@@ -55,4 +55,28 @@ $(".comment-reply").click(function () {
     var name = $(this).attr('data-name');
     $('#comment-parent_id').val(id);
     $('#comment-content').attr('placeholder', '回复@' + name + ':').focus();
-})
+});
+
+$(".btn-form-topic").click(function () {
+    $(this).parents("form").find("textarea").val("#话题内容# ").focus();
+});
+
+// 实现刷新话题列表
+$(".refresh").click(function () {
+    var page = $(".menu-topic").attr("data-page");
+    ++page;
+    $.ajax({
+        url: "?=topic/list",
+        type: "POST",
+        dataType: "json",
+        data: {'page': page},
+        success: function (data) {
+            var topic = '';
+            $(data.topics).each(function (i, k) {
+                topic += "<p><a href='?r=topic/show&id=" + k['id'] + "'>" + k['name'] + "</a></p>"
+            });
+            $(".menu-topic-list").html(topic);
+            $(".menu-topic").attr("data-page", data.page);
+        }
+    });
+});

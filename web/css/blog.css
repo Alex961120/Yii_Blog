@@ -227,5 +227,9 @@ body {
 }
 
 .card-btn .active {
-    color:sandybrown;
+    color: sandybrown;
+}
+
+.refresh {
+    float: right;
 }

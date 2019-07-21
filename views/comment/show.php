@@ -63,6 +63,6 @@ use app\widgets\BlogWidget;
 </div>
 
 <div class="menu-container">
-<!--    --><?//=app\widgets\MenuTopicWidget::widget()?>
+    <?=app\widgets\MenuTopicWidget::widget()?>
     <?=app\widgets\MenuRecommendWidget::widget()?>
 </div>
