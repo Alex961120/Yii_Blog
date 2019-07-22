@@ -40,7 +40,7 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['user_id', 'target_type', 'target_id'], 'required'],
             [['user_id', 'target_id', 'action_id'], 'integer'],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at'], 'default', 'value' => date('Y-m-d H:i:s', time())],
             [['target_type'], 'string', 'max' => 255],
         ];
     }
